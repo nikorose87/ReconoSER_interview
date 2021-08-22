@@ -1,0 +1,32 @@
+<!doctype html>
+<title>Python Flask Image Upload and Automatic Face Recognition plus Eye Horizontal Alignment</title>
+<h2>Select an image to upload and display</h2>
+<p>
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+		<ul>
+		{% for message in messages %}
+		  <li>{{ message }}</li>
+		{% endfor %}
+		</ul>
+	  {% endif %}
+	{% endwith %}
+</p>
+{% if filename1 %}
+	<div>
+		<img src="{{ url_for('display_img', filename=filename1) }}" 	
+		width=400px	height=auto>
+		<img src="{{ url_for('display_img', filename=filename1[:-4]+'_m.jpg') }}" 	
+		width=400px	height=auto style="float:left">
+	</div>
+{% endif %}
+<form method="post" action="/" enctype="multipart/form-data">
+    <dl>
+		<p>
+			<input type="file" name="file" autocomplete="off" required>
+		</p>
+    </dl>
+    <p>
+		<input type="submit" value="Submit">
+	</p>
+</form>
