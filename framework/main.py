@@ -38,7 +38,7 @@ def upload_image():
 @app.route('/display/<filename>')
 def display_img(filename):
 	#print('display_image filename: ' + filename)
-	return redirect(url_for('static', filename='uploads/' + filename), code=301)
+	return redirect(url_for('static', filename= os.path.join('uploads', filename), code=301))
 
 def img_CV(filename):
 	#print('display_image filename: ' + filename)
